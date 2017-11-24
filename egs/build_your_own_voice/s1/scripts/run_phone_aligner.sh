@@ -34,7 +34,14 @@ cd $lab_dir
 mkdir cmu_us_${Voice}
 cd cmu_us_${Voice}
 
-$FESTVOXDIR/src/clustergen/setup_cg cmu us ${Voice} 
+
+# Export environment variable to be ready for festival and festvox!
+export ESTDIR=${ESTDIR}
+export FESTDIR=${FESTDIR}
+export FESTVOXDIR=${FESTVOXDIR}
+
+# Run festvox part
+$FESTVOXDIR/src/clustergen/setup_cg cmu us ${Voice}
 
 txt_file=${WorkDir}/${inp_txt}
 txt_dir=${WorkDir}/${inp_txt}
@@ -50,7 +57,7 @@ fi
 
 cp $WorkDir/$wav_dir/*.wav wav/
 
-./bin/do_build build_prompts 
+./bin/do_build build_prompts
 ./bin/do_build label
 ./bin/do_build build_utts
 
@@ -65,7 +72,7 @@ ${frontend}/festival_utt_to_lab/make_labels \
                         full-context-labels \
                         cmu_us_${Voice}/festival/utts \
                         ${FESTDIR}/examples/dumpfeats \
-                        ${frontend}/festival_utt_to_lab 
+                        ${frontend}/festival_utt_to_lab
 
 echo "normalizing label files for merlin..."
 python ${frontend}/utils/normalize_lab_for_merlin.py \
@@ -84,5 +91,3 @@ if [ ! "$(ls -A ${phone_labels})" ]; then
 else
     echo "You should have your labels ready in: $phone_labels !!"
 fi
-
-
