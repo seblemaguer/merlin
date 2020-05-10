@@ -1,6 +1,6 @@
 #!/bin/bash
 
-voice_name="css-10"
+voice_name="slt_arctic"
 setup_data=true
 train_tts=true
 run_tts=true
