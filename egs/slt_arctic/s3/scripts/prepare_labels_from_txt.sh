@@ -36,7 +36,12 @@ fi
 (
     mkdir -p $WorkDir/$lab_dir/label_no_align
     cd $MARY_DIR
-    ./gradlew b -Plist_filename="$file_id_scp" -Ptxt_dir="$WorkDir/$txt_dir" -Plab_dir="$WorkDir/$lab_dir/label_no_align" -Pconf="$WorkDir/$MaryConfiguration" --stacktrace # -Dlog4j.level=INFO -Dlog4j.configurationFile=/home/sebastien/align/minimal_marytts/src/log4j2.xml
+    ./gradlew b -Plist_filename="$file_id_scp" \
+                -Ptxt_dir="$WorkDir/$txt_dir" \
+                -Plab_dir="$WorkDir/$lab_dir/label_no_align" \
+                -Pconf="$WorkDir/$MaryConfiguration"
+                # --stacktrace
+                # -Dlog4j.level=INFO -Dlog4j.configurationFile=/home/sebastien/align/minimal_marytts/src/log4j2.xml
 )
 
 
